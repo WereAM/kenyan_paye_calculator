@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>PAYE Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" type="text/css" href="assets/paye.css">
+    <style type="text/tailwindcss">
+         @layer components {
+            .main {
+                @apply relative flex min-h-screen flex-col overflow-hidden md:py-8;
+            }
+            .main-content {
+                @apply items-center shadow-xl ring-1 ring-gray-300/5 sm:rounded-lg md:rounded-xl bg-gradient-to-r bg-white dark:bg-gray-300 border border-red-100 dark:border-red-100 dark:bg-gray-300
+            }
+            .form-group {
+                @apply flex justify-center items-center justify-between
+            }
+            .form-control {
+                @apply flex items-center mr-4
+            }
+            .form-control__input {
+                @apply w-4 h-4 text-red-200 bg-gray-700 rounded border border-red-500 focus:ring-red-100 dark:focus:ring-red-200 dark:ring-offset-gray-700 focus:ring-2 appearance-none checked:bg-gradient-to-br from-pink-500 to-red-400 outline-none dark:bg-gray-100 dark:border-red-100 cursor-pointer
+            }
+            .form-control__span {
+                @apply inline-flex items-center px-3 text-sm text-gray-900 bg-gray-300 border border-l-0 border-gray-300 rounded-none dark:bg-gray-300 dark:text-gray-900 dark:border-gray-300
+            }
+            .table-row {
+                @apply border-b border-blue-200 dark:bg-blue-100 dark:border-gray-700
+            }
+            .btn {
+                @apply text-white w-full uppercase tracking-wider bg-gradient-to-br from-blue-500 to-blue-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800 font-semibold rounded-none text-sm px-5 py-2.5 text-center mr-2 mb-2
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="one">
+        <div class="logo">
+            <img src="https://miro.medium.com/max/1200/1*_B4mw5mxlGTgvcLcm7ir9Q.png">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li class="active"><a href="paye.html">CALCULATE</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    
+    <main>
+        <div class="dark:bg-gray-300">
+            <div class="main">
+                <div class="flex space-y-6 md:space-y-0">
+                    <div class="main-content md:mx-12 md:flex md:gap-4">
+                        <form class="space-y-6 p-4 sm:p-6 md:max-w-lg">
+
+                            <div class="flex flex-col md:space-x-4 justify-center items-center">
+                                <h1 class="mb-4 text-3xl font-semibolad">Fill in the blanks appropriately</h1>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="form-group__header">PAY PERIOD:</div>
+                                <div class="flex w-1/2">
+                                    <div class="form-control">
+                                        <input class="form-control__input" type="radio" name="pay_period" id="month" value="month" required>
+                                        <label class="form-control__label" for="month"> MONTH</label>
+                                    </div>
+                                    <div class="form-control">
+                                        <input class="form-control__input" type="radio" name="pay_period" id="year" value="year" required>
+                                        <label class="form-control__label" for="year"> YEAR</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="basic_salary" class="form-group__header">BASIC SALARY:</label>
+                                <div class="flex w-1/2">
+                                    <input type="text" id="basic_salary" class="form-control__inputfield" required>
+                                    <span class="form-control__span">KES</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="benefits" class="form-group__header" required>BENEFITS (BONUS, ALLOWANCE):</label>
+                                <div class="flex w-1/2">
+                                    <input type="text" id="benefits" class="form-control__inputfield" required>
+                                    <span class="form-control__span">KES</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="form-group__header">DEDUCT NSSF:</div>
+                                <div class="flex w-1/2">
+                                    
+                                    <div class="form-control">
+                                        <input class="form-control__input" type="radio" name="deduct_nssf" value="yes" id="deduct_nssf-yes" required>
+                                        <label class="form-control__label" for="deduct_nssf-yes">YES</label>
+                                    </div>
+                                    
+                                    <div class="form-control">
+                                        <input class="form-control__input" type="radio" name="deduct_nssf" value="no" id="deduct_nssf-no" required>
+                                        <label class="form-control__label" for="deduct_nssf-no">NO</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="form-group__header">NSSF RATES:</div>
+                                <div class="flex flex-col w-1/2 mb-4">
+                                    <div class="flex items-center mb-2">
+                                        <input class="form-control__input" type="radio" name="nssf_rates" id="new_nssf" value="new" required>
+                                        <label for="new_nssf" class="form-control__label">NEW NSSF RATES (TIERED)</label>
+                                    </div>
+                                        
+                                    <div class="flex items-center">
+                                        <input class="form-control__input" type="radio" name="nssf_rates" id="old_nssf" value="old" required>
+                                        <label for="old_nssf" class="form-control__label">OLD NSSF RATES (KES 200)</label>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            <div class="form-group">
+                                <div class="form-group__header">DEDUCT NHIF:</div>
+                                <div class="flex w-1/2">
+                                    <div class="form-control">
+                                        <input class="form-control__input" type="radio" name="deduct_nhif" id="deduct_nhif-yes" value="yes" required>
+                                        <label class="form-control__label" for="deduct_nhif-yes">YES</label>
+                                    </div>
+
+                                    <div class="form-control">
+                                        <input class="form-control__input" type="radio" name="deduct_nhif" id="deduct_nhif-no" value="no" required>
+                                        <label class="form-control__label" for="deduct_nhif-no">NO</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" id="calculate" class="btn">CALCULATE</button>
+
+                        </form>
+                        
+                        <div class="flex-1">
+                            <div class="bg-blue-100 text-sm rounded-r-xl px-8 py-6">
+                                <table class="w-full whitespace-nowrap tracking-light text-gray-800">
+                                    <tbody>
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">INCOME BEFORE PENSION DEDUCTION</td>
+                                            <td id="income_before_nssf_deduction" class="text-right py-2 text-red-500">KES 0.00</td>
+                                        </tr>
+
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">DEDUCTIBLE NSSF PENSION CONTRIBUTION</td>
+                                            <td id="nssf" class="text-right py-2 text-red-500">KES 0.00</td>
+                                        </tr>
+                        
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">INCOME AFTER PENSION DEDUCTIONS</td>
+                                            <td id="income_after_nssf_deduction" class="text-right py-2 text-red-500">KES 0.00</td>
+                                        </tr>
+                          
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">BENEFITS IN KIND</td>
+                                            <td id="benefits_in_kind" class="text-right py-2 text-red-500">KES 0.00</td>
+                                        </tr>
+                          
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">TAXABLE INCOME</td>
+                                            <td id="taxable_income" class="text-right py-2 text-red-500">KES. 0.00</td>
+                                        </tr>
+                          
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">TAX ON TAXABLE INCOME</td>
+                                            <td id="tax_on_taxable_income" class="text-right py-2 text-red-500">KES 0.00</td>
+                                        </tr>
+
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">PERSONAL RELIEF</td>
+                                            <td id="personal_relief" class="text-right py-2 text-red-500">KES 0.00</td>
+                                        </tr>
+                          
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">TAX NET OFF RELIEF</td>
+                                            <td id="tax_net_off_relief" class="text-right py-2 text-red-500">KES 0.00</td>
+                                        </tr>
+
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">PAYE</td>
+                                            <td id="paye" class="text-right py-2 text-red-500">KES 0.00</td>
+                                        </tr>
+
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">CHARGABLE INCOME</td>
+                                            <td id="chargable_income" class="text-right py-2 text-red-500">KES 0.00</td>
+                                        </tr>
+
+                                        <tr class="table-row">
+                                            <td class="text-left py-2">NHIF CONTRIBUTION</td>
+                                            <td id="nhif" class="text-right py-2 text-red-500">KES 0.00</td>
+                                        </tr>
+
+                                        <tr class="border-t">
+                                            <th class="text-left py-2">NET PAY</th>
+                                            <th id="net_pay" class="text-right py-2">KES 0.00</th>
+                                        </tr>
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="assets/paye.js"></script>
+</body>
+</html>

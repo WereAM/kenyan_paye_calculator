@@ -1,0 +1,86 @@
+*{
+	margin: 0;
+	padding: 0;
+	font-family: serif;
+}
+header{
+	background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url(https://kenyanwallstreet.com/wp-content/uploads/2020/05/Goa%E2%80%99s-Ambelim-proposes-to-increase-tax.jpg);
+	height: 100vh;
+	background-size: cover;
+	background-position: center;
+}
+ul{
+	float: right;
+	list-style-type: none;
+	margin-top: 25px;
+}
+ul li{
+	display: inline-block;
+}
+ul li a{
+	text-decoration: none;
+	color: black;
+	padding: 5px 20px;
+	border: 1px solid transparent;
+}
+ul li a:hover{
+	background-color: black;
+	color: white;
+}
+ul li.active a{
+	background-color: black;
+	color: white;
+}
+.logo img{
+	float: left;
+	width: 150px;
+	height: 80px;
+}
+.one{
+	max-width: 1300px;
+	margin: auto;
+}
+nav{
+	width: 100%;
+	height: 80px;
+	background-color: ghostwhite;
+}
+.title{
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.title h1{
+	color: black;
+	font-size: 50px;
+	padding: 2rem 0;
+}
+.title h3{
+	color: black;
+	font-size: 30px;
+	padding: 1rem 0;
+}
+.title p{
+	background-color: gainsboro;
+	color:  black;
+	font-size: 20px;
+}
+.buttons{
+	position: absolute;
+	top: 80%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.btn{
+	background-color: aliceblue;
+	border: 2px solid black;
+	border-radius: 30px;
+	padding: 10px 30px;
+	color: black;
+	text-decoration: blink;
+}
+.btn:hover{
+	background-color: white;
+	color: black;
+}
